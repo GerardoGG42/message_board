@@ -1,64 +1,71 @@
-# Message Board - Django Task Manager
 
-Este proyecto es una aplicación web desarrollada con Django para la gestión y visualización de tareas.
+# Message Board - Gestor de Tareas en Django
 
-## Características principales
+Aplicación web desarrollada con Django para gestionar y visualizar tareas. Permite listar tareas, ver fechas de creación y actualización, y administrar desde el panel de Django.
 
+---
+
+## Tabla de Contenidos
+1. [Características](#características)
+2. [Estructura del Proyecto](#estructura-del-proyecto)
+3. [Instalación y Ejecución](#instalación-y-ejecución)
+4. [Modelo de Datos](#modelo-de-datos)
+5. [Vistas y URLs](#vistas-y-urls)
+6. [Personalización](#personalización)
+7. [Administración](#administración)
+8. [Dependencias](#dependencias)
+9. [Licencia](#licencia)
+
+---
+
+## Características
 - Listado de tareas con título, fecha de creación y última actualización.
-- Estructura basada en Django 5.2.6.
-- Uso de vistas genéricas para mostrar las tareas.
+- Uso de vistas genéricas (`ListView`).
 - Base de datos SQLite3 por defecto.
+- Panel de administración de Django.
 
-## Estructura del proyecto
-
+## Estructura del Proyecto
 ```
 message_board/
 ├── db.sqlite3                # Base de datos SQLite
 ├── manage.py                 # Script de gestión de Django
-├── requirements.txt          # Dependencias del proyecto
-├── django_base/              # Configuración principal de Django
-│   ├── settings.py           # Configuración del proyecto
+├── requirements.txt          # Dependencias
+├── django_base/              # Configuración principal
+│   ├── settings.py           # Configuración
 │   ├── urls.py               # Rutas principales
 │   └── ...
-├── tasks/                    # Aplicación de tareas
+├── tasks/                    # App de tareas
 │   ├── models.py             # Modelo Task
-│   ├── views.py              # Vista de listado de tareas
+│   ├── views.py              # Vista de listado
 │   ├── urls.py               # Rutas de la app
-│   └── migrations/           # Migraciones de la base de datos
+│   └── migrations/           # Migraciones
 └── templates/
-	 └── tasks_list.html       # Plantilla para mostrar tareas
+	 └── tasks_list.html       # Plantilla de tareas
 ```
 
-## Instalación y ejecución
-
+## Instalación y Ejecución
 1. **Clona el repositorio:**
 	```powershell
 	git clone <URL-del-repositorio>
 	cd message_board
 	```
-
 2. **Instala las dependencias:**
 	```powershell
 	pip install -r requirements.txt
 	```
-
 3. **Aplica migraciones:**
 	```powershell
 	python manage.py migrate
 	```
-
 4. **Ejecuta el servidor de desarrollo:**
 	```powershell
 	python manage.py runserver
 	```
-
 5. **Accede a la aplicación:**
-	Abre tu navegador y visita [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+	[http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
-## Modelo de datos
-
-El modelo principal es `Task`:
-
+## Modelo de Datos
+Modelo principal: `Task`
 ```python
 class Task(models.Model):
 	 title = models.CharField(max_length=200)
@@ -67,29 +74,25 @@ class Task(models.Model):
 ```
 
 ## Vistas y URLs
-
-- La vista principal es `TaskListView`, que muestra todas las tareas en la plantilla `tasks_list.html`.
-- La URL raíz (`/`) muestra el listado de tareas.
+- Vista principal: `TaskListView` (tasks/views.py)
+- Plantilla: `tasks_list.html` (templates/)
+- URL raíz (`/`): muestra el listado de tareas
 
 ## Personalización
-
-Puedes modificar el modelo `Task` en `tasks/models.py` para agregar más campos o funcionalidades.
+Puedes modificar el modelo `Task` en `tasks/models.py` para agregar más campos o funcionalidades según tus necesidades.
 
 ## Administración
-
-Accede a `/admin` para gestionar tareas desde el panel de administración de Django. Para crear un superusuario:
-
+Accede a `/admin` para gestionar tareas desde el panel de administración de Django.
+Para crear un superusuario:
 ```powershell
 python manage.py createsuperuser
 ```
 
-## Dependencias principales
-
+## Dependencias
 - Django==5.2.6
 - asgiref==3.9.1
 - sqlparse==0.5.3
 - tzdata==2025.2
 
 ## Licencia
-
-Este proyecto se distribuye bajo la licencia MIT.
+MIT
